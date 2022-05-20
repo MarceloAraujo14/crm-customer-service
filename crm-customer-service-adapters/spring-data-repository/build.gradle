@@ -8,11 +8,6 @@ group 'br.com.crm-customer-service'
 version '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
@@ -29,4 +24,12 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }
