@@ -24,7 +24,6 @@ public class Customer {
     }
 
     protected Customer() {
-
     }
 
     public PersonName getName() {

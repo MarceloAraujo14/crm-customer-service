@@ -1,24 +1,26 @@
 package br.com.crmcustomer.entrypoint.mapper;
 
-import br.com.crmcustomer.core.domain.external.CustomerInput;
-import br.com.crmcustomer.core.domain.external.CustomerOutput;
-import br.com.crmcustomer.entrypoint.request.RegisterCustomerRequest;
-import br.com.crmcustomer.entrypoint.response.RegisterCustomerResponse;
+import br.com.crmcustomer.core.external.CustomerOutput;
+import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerInput;
+import br.com.crmcustomer.entrypoint.resources.register.RegisterCustomerRequest;
+import br.com.crmcustomer.entrypoint.response.CustomerResponse;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ResourceCustomerMapper {
 
-    public CustomerInput toInput(RegisterCustomerRequest request){
-        return new CustomerInput(
+    public RegisterCustomerInput toInput(RegisterCustomerRequest request){
+        return new RegisterCustomerInput(
                 request.getName(),
                 request.getMotherName(),
                 request.getDocumentType(), request.getDocumentContent(),
                 request.getContactType(), request.getContactContent(),
                 request.getAddressStreet(), request.getAddressNumber());
     }
-    public RegisterCustomerResponse toResponse(CustomerOutput output){
-        return new RegisterCustomerResponse(
+    public CustomerResponse toResponse(CustomerOutput output){
+        return new CustomerResponse(
                 output.getName(),
                 output.getMotherName(),
                 output.getDocumentType(),
@@ -28,5 +30,8 @@ public class ResourceCustomerMapper {
                 output.getAddressStreet(),
                 output.getAddressNumber()
                 );
+    }
+    public List<CustomerResponse> toResponseList(List<CustomerOutput> outputList){
+        return outputList.stream().map(this::toResponse).toList();
     }
 }

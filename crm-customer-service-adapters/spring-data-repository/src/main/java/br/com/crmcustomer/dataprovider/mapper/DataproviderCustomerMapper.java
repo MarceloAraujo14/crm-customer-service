@@ -10,6 +10,8 @@ import br.com.crmcustomer.core.domain.vo.PersonName;
 import br.com.crmcustomer.dataprovider.entity.CustomerEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataproviderCustomerMapper {
 
@@ -25,7 +27,6 @@ public class DataproviderCustomerMapper {
                 customer.getAddress().getNumber()
         );
     }
-
     public Customer toCustomer(CustomerEntity entity){
         return new Customer(
                 new PersonName(entity.getName()),
@@ -35,5 +36,7 @@ public class DataproviderCustomerMapper {
                 new Address(entity.getAddressStreet(), entity.getAddressNumber())
         );
     }
-
+    public List<Customer> toCustomerList(List<CustomerEntity> entityList){
+        return entityList.stream().map(this::toCustomer).toList();
+    }
 }
