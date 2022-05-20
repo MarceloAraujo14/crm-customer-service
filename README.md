@@ -55,7 +55,7 @@ Or simply
 Register a New Customer: http://localhost:8080/api/v1/customer
 RequestBody
 consumes/produces = "application/json"
-```
+```json
 {
     "name": "Jhon Doe",
     "motherName": "Gina Doe",
