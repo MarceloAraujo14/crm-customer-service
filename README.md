@@ -38,5 +38,33 @@ Use to make API calls to Application Endpoints.
 ```
 Clone the project, open the folder on IDE and run it.
 ```
+### Build and run Gradle
+```
+./gradlew clean build
+```
+```
+java -jar crm-customer-service-api/build/libs/crm-customer-service-api-0.0.1-SNAPSHOT.jar
+```
+Or simply
+```
+./gradlew bootRun
+```
 
-
+### Api Endpoints
+- Using Postman
+Register a New Customer: http://localhost:8080/api/v1/customer
+RequestBody
+consumes/produces = "application/json"
+```
+{
+    "name": "Jhon Doe",
+    "motherName": "Gina Doe",
+    "documentType": "RG",
+    "documentContent": "132456789",
+    "contactType": "PHONE",
+    "contactContent": "(21) 98999-9999",
+    "addressStreet": "Rua do A",
+    "addressNumber": "32B"
+  
+}
+```
