@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.crmcustomer.core.domain.vo.DocumentTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-05-20T14:28:48" hostname="DESKTOP-CP3023C" time="0.001">
+  <properties/>
+  <testcase name="cpfIsValid()" classname="br.com.crmcustomer.core.domain.vo.DocumentTest" time="0.0"/>
+  <testcase name="shouldThrowWhenRgDoesNotHaveNineDigits()" classname="br.com.crmcustomer.core.domain.vo.DocumentTest" time="0.0"/>
+  <testcase name="rgIsValid()" classname="br.com.crmcustomer.core.domain.vo.DocumentTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

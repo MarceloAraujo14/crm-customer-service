@@ -1,0 +1,18 @@
+
+m
+java:S1104
+"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾8’Ä¢ú0
+x
+java:S1104"VMake motherName a static final constant or non-public and provide accessors if needed.(½ê†ªøÿÿÿÿ8’Ä¢ú0
+z
+java:S1104"XMake documentType a static final constant or non-public and provide accessors if needed.(Õúœâşÿÿÿÿ8’Ä¢ú0
+}
+java:S1104"[Make documentContent a static final constant or non-public and provide accessors if needed.(·—ëìøÿÿÿÿ8’Ä¢ú0
+t
+java:S1104"WMake contactType a static final constant or non-public and provide accessors if needed.(­²©´8’Ä¢ú0
+|
+java:S1104"ZMake contactContent a static final constant or non-public and provide accessors if needed.( ™€…üÿÿÿÿ8’Ä¢ú0
+{
+java:S1104"YMake addressStreet a static final constant or non-public and provide accessors if needed.(•Ãİûÿÿÿÿ8’Ä¢ú0
+{
+java:S1104"YMake addressNumber a static final constant or non-public and provide accessors if needed.(¯±œşúÿÿÿÿ8’Ä¢ú0
