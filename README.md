@@ -4,7 +4,7 @@ The project is based on Clean Architecture, so the domain rules are independent 
 to any external implementations. 
 The api can be further improve with another functionalities.
 
-The project was implemented with three layers:
+The project was implemented with three layers and each layer are on a separated module:
 - Core Layer: include the domain business rules and the application business rules.
 - Api Layer: contains the application entrypoint, the configuration and dependencies of the other layers and the api endpoints.
 - Adapters layer: contains the adapters between core layer and external applications, like database connections. 
