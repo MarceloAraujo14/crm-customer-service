@@ -1,7 +1,8 @@
 package br.com.crmcustomer.entrypoint.config;
 
 import br.com.crmcustomer.core.port.CustomerRepository;
-import br.com.crmcustomer.core.usecase.RegisterCustomerUseCaseImpl;
+import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;
+import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class RegisterNewCustomerConfig {
 
     @Bean
-    public RegisterCustomerUseCaseImpl registerNewCustomer(CustomerRepository repository){
+    public RegisterCustomerUseCase registerNewCustomer(CustomerRepository repository){
         return new RegisterCustomerUseCaseImpl(repository);
     }
 }
