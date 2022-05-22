@@ -4,6 +4,8 @@ import br.com.crmcustomer.core.domain.exception.InvalidCustomerNameException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 class PersonNameTest {
 
     @Test
@@ -17,28 +19,31 @@ class PersonNameTest {
     @Test
     void shouldThrowWhenNameIsBlank(){
         //given
-        String name = "";
+        String name = " ";
+        String expectMessage = "The field name should be fill.";
         //when
         //then
-        Assertions.assertThrows(InvalidCustomerNameException.class,
-                () -> new PersonName(name), "The field name should be fill.");
+        assertThatThrownBy(() -> new PersonName(name)).isInstanceOf(InvalidCustomerNameException.class)
+                .hasMessageContaining(expectMessage);
     }
     @Test
     void shouldThrowWhenNameIsTooShort(){
         //given
         String name = "Jhon";
+        String expectMessage = "The field name should have length between 5 and 50.";
         //when
         //then
-        Assertions.assertThrows(InvalidCustomerNameException.class,
-                () -> new PersonName(name), "The field name should have length between 5 and 50.");
+        assertThatThrownBy(() -> new PersonName(name)).isInstanceOf(InvalidCustomerNameException.class)
+                        .hasMessageContaining(expectMessage);
     }
     @Test
     void shouldThrowWhenFirtsOrLastNameIsNotProvided(){
         //given
         String name = "JhonDoe";
+        String expectedMessage = "Name should have at least first and last name.";
         //when
         //then
-        Assertions.assertThrows(InvalidCustomerNameException.class,
-                () -> new PersonName(name), "Name should have at least first and last name.");
+        assertThatThrownBy(() -> new PersonName(name)).isInstanceOf(InvalidCustomerNameException.class)
+                .hasMessageContaining(expectedMessage);
     }
 }

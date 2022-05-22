@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface RetrieveCustomerResource {
 
-    ResponseEntity<CustomerResponse> retrieveCustomerById(Long id);
+    ResponseEntity<CustomerResponse> retrieveCustomerById(String documentContent);
     ResponseEntity<List<CustomerResponse>> retrieveAllCustomers();
 }

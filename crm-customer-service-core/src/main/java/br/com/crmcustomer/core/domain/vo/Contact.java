@@ -11,17 +11,18 @@ import static br.com.crmcustomer.core.util.validation.PhoneNumberValidator.valid
 
 public class Contact {
 
-    private ContactType contactType;
-    private String contactContent;
+    private final ContactType contactType;
+    private final String contactContent;
 
-    public Contact(ContactType contactType, String contactContent) {
-        if(contactType.equals(PHONE)) {
+    public Contact(String contactContent) {
+        ContactType type = defineContactType(contactContent);
+        if(type.equals(PHONE)) {
             contactContent = formatPhone(contactContent); validadePhone(contactContent);
         }
-        if(contactType.equals(EMAIL)) {
+        if(type.equals(EMAIL)) {
             contactContent = formatEmail(contactContent); validadeEmail(contactContent);
         }
-        this.contactType = contactType;
+        this.contactType = type;
         this.contactContent = contactContent;
     }
 
@@ -37,5 +38,10 @@ public class Contact {
     public String toString() {
         return  "contactType=" + contactType +
                 ", contactContent='" + contactContent + '\'';
+    }
+
+    private ContactType defineContactType(String contactContent){
+        if(contactContent.contains("@")) return EMAIL;
+        return PHONE;
     }
 }

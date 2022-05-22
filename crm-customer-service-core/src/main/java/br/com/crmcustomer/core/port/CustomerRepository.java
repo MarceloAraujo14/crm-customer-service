@@ -8,10 +8,10 @@ public interface CustomerRepository {
 
     Customer save(Customer customer);
 
-    Customer getCustomerById(Long id);
+    Customer getCustomerByDocument(String documentContent);
 
     List<Customer> listAllCustomer();
 
-    void deleteCustomer(Long id);
+    void deleteCustomer(String documentContent);
 
 }

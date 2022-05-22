@@ -15,7 +15,11 @@ public class Customer {
     private Contact contact;
     private Address address;
 
-    public Customer(PersonName name, PersonName motherName, Document document, Contact contact, Address address) {
+    public Customer(PersonName name,
+                    PersonName motherName, 
+                    Document document,
+                    Contact contact,
+                    Address address) {
         this.name = name;
         this.motherName = motherName;
         this.document = document;
@@ -73,4 +77,6 @@ public class Customer {
     public int hashCode() {
         return Objects.hash(name, motherName, document, contact, address);
     }
+
+
 }

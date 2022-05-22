@@ -16,7 +16,6 @@ public class DocumentValidator {
         if(documentType.equals(RG) && documentContent.length() != 9)
             throw new InvalidDocumentException("RG document must contain 9 digits.");
     }
-
     private DocumentValidator() {
     }
 }

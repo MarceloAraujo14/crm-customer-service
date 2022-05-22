@@ -5,7 +5,6 @@ import br.com.crmcustomer.core.port.CustomerRepository;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Log4j2
@@ -21,7 +20,7 @@ public class CustomerInMemoryRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer getCustomerById(Long id) {
+    public Customer getCustomerByDocument(String documentContent) {
         return null;
     }
 
@@ -31,7 +30,7 @@ public class CustomerInMemoryRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(String documentContent) {
         this.customerList.clear();
     }
 }

@@ -12,10 +12,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CustomerEntity {
+public class CustomerToPersist {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     @Column(name = "name", nullable = false, length = 50)
     private String name;
     @Column(name = "mother_name", nullable = false, length = 50)
@@ -23,6 +22,7 @@ public class CustomerEntity {
     @Column(name = "doc_type", nullable = false, length = 10)
     private String documentType;
     @Column(name = "doc_content", nullable = false, length = 14)
+    @Id
     private String documentContent;
     @Column(name = "contact_type", nullable = false, length = 10)
     private String contactType;
@@ -33,14 +33,14 @@ public class CustomerEntity {
     @Column(name = "address_number", nullable = false, length = 50)
     private String addressNumber;
 
-    public CustomerEntity(String name,
-                          String motherName,
-                          String documentType,
-                          String documentContent,
-                          String contactType,
-                          String contactContent,
-                          String addressStreet,
-                          String addressNumber) {
+    public CustomerToPersist(String name,
+                             String motherName,
+                             String documentType,
+                             String documentContent,
+                             String contactType,
+                             String contactContent,
+                             String addressStreet,
+                             String addressNumber) {
         this.name = name;
         this.motherName = motherName;
         this.documentType = documentType;
@@ -56,12 +56,12 @@ public class CustomerEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        CustomerEntity that = (CustomerEntity) o;
-        return Objects.equals(id, that.id);
+        CustomerToPersist that = (CustomerToPersist) o;
+        return Objects.equals(documentContent, that.documentContent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
+        return Objects.hash(super.hashCode(), documentContent);
     }
 }

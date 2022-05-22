@@ -18,10 +18,10 @@ public class RetrieveCustomerUseCaseImpl implements RetrieveCustomerUseCase{
         this.customerRepository = customerRepository;
     }
     @Override
-    public CustomerOutput retrieveCustomerById(Long id) {
-        String logg = String.format("Retrieving customer with id: %s", id);
+    public CustomerOutput retrieveCustomerById(String documentContent) {
+        String logg = String.format("Retrieving customer with id: %s", documentContent);
         log.info(logg);
-        return customerMapper.toOutput(customerRepository.getCustomerById(id));
+        return customerMapper.toOutput(customerRepository.getCustomerByDocument(documentContent));
     }
     @Override
     public List<CustomerOutput> retrieveAllCustomers() {

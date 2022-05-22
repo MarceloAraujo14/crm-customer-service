@@ -1,5 +1,7 @@
 package br.com.crmcustomer.core.external;
 
+import java.util.Objects;
+
 public class CustomerOutput {
 
     private String name;
@@ -59,5 +61,39 @@ public class CustomerOutput {
 
     public String getAddressNumber() {
         return addressNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerOutput that = (CustomerOutput) o;
+        return Objects.equals(name, that.name)
+                && Objects.equals(motherName, that.motherName)
+                && Objects.equals(documentType, that.documentType)
+                && Objects.equals(documentContent, that.documentContent)
+                && Objects.equals(contactType, that.contactType)
+                && Objects.equals(contactContent, that.contactContent)
+                && Objects.equals(addressStreet, that.addressStreet)
+                && Objects.equals(addressNumber, that.addressNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, motherName, documentType, documentContent, contactType, contactContent, addressStreet, addressNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerOutput{" +
+                "name='" + name + '\'' +
+                ", motherName='" + motherName + '\'' +
+                ", documentType='" + documentType + '\'' +
+                ", documentContent='" + documentContent + '\'' +
+                ", contactType='" + contactType + '\'' +
+                ", contactContent='" + contactContent + '\'' +
+                ", addressStreet='" + addressStreet + '\'' +
+                ", addressNumber='" + addressNumber + '\'' +
+                '}';
     }
 }
