@@ -24,7 +24,7 @@ public class CustomerToPersist {
     @Column(name = "doc_content", nullable = false, length = 14)
     @Id
     private String documentContent;
-    @Column(name = "contact_type", nullable = false, length = 10)
+    @Column(name = "contact_type", nullable = false, length = 10, unique = true)
     private String contactType;
     @Column(name = "contact_content", nullable = false, length = 50)
     private String contactContent;
