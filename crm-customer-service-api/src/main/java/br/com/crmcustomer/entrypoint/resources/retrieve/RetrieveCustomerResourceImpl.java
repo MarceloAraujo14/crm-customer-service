@@ -24,10 +24,10 @@ public class RetrieveCustomerResourceImpl implements RetrieveCustomerResource {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerResponse> retrieveCustomerById(@PathVariable Long id) {
+    public ResponseEntity<CustomerResponse> retrieveCustomerById(@PathVariable String documentContent) {
         return ResponseEntity.ok(
                 converter.toResponse(
-                        retrieveCustomerUseCase.retrieveCustomerById(id)));
+                        retrieveCustomerUseCase.retrieveCustomerById(documentContent)));
     }
     @Override
     @GetMapping

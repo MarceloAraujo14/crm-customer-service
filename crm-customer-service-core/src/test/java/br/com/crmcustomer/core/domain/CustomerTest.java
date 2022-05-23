@@ -2,13 +2,10 @@ package br.com.crmcustomer.core.domain;
 
 import br.com.crmcustomer.core.domain.vo.Address;
 import br.com.crmcustomer.core.domain.vo.Contact;
-import br.com.crmcustomer.core.domain.vo.PersonName;
 import br.com.crmcustomer.core.domain.vo.Document;
+import br.com.crmcustomer.core.domain.vo.PersonName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static br.com.crmcustomer.core.domain.enums.ContactType.PHONE;
-import static br.com.crmcustomer.core.domain.enums.DocumentType.CPF;
 
 
 class CustomerTest {
@@ -26,12 +23,12 @@ class CustomerTest {
         Customer registerCustomer = new Customer(
                 new PersonName(name),
                 new PersonName(motherName),
-                new Document(CPF, cpf),
-                new Contact(PHONE, phoneNumer),
+                new Document(cpf),
+                new Contact(phoneNumer),
                 new Address(address_street, address_number));
         //then
         Assertions.assertInstanceOf(Customer.class, registerCustomer);
     }
 
-
+    //todo: test the rest of the application!!!!
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RetrieveCustomerUseCase {
 
-    CustomerOutput retrieveCustomerById(Long id);
+    CustomerOutput retrieveCustomerById(String documentContent);
 
     List<CustomerOutput> retrieveAllCustomers();
 

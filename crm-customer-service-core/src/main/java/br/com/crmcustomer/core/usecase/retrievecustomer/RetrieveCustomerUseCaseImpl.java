@@ -1,5 +1,6 @@
 package br.com.crmcustomer.core.usecase.retrievecustomer;
 
+import br.com.crmcustomer.core.domain.exception.CustomerNotFoundException;
 import br.com.crmcustomer.core.external.CustomerOutput;
 import br.com.crmcustomer.core.port.CustomerRepository;
 import br.com.crmcustomer.core.util.mapper.CustomerMapper;
@@ -18,10 +19,13 @@ public class RetrieveCustomerUseCaseImpl implements RetrieveCustomerUseCase{
         this.customerRepository = customerRepository;
     }
     @Override
-    public CustomerOutput retrieveCustomerById(Long id) {
-        String logg = String.format("Retrieving customer with id: %s", id);
+    public CustomerOutput retrieveCustomerById(String documentContent) {
+        String logg = String.format("Retrieving customer with id: %s", documentContent);
+        if(customerRepository.getCustomerByDocument(documentContent) == null){
+            throw new CustomerNotFoundException("Customer with the document " + documentContent + " not found.");
+        }
         log.info(logg);
-        return customerMapper.toOutput(customerRepository.getCustomerById(id));
+        return customerMapper.toOutput(customerRepository.getCustomerByDocument(documentContent));
     }
     @Override
     public List<CustomerOutput> retrieveAllCustomers() {

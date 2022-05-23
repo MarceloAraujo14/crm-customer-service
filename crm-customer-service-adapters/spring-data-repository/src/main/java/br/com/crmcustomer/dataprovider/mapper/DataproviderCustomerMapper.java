@@ -1,13 +1,11 @@
 package br.com.crmcustomer.dataprovider.mapper;
 
 import br.com.crmcustomer.core.domain.Customer;
-import br.com.crmcustomer.core.domain.enums.ContactType;
-import br.com.crmcustomer.core.domain.enums.DocumentType;
 import br.com.crmcustomer.core.domain.vo.Address;
 import br.com.crmcustomer.core.domain.vo.Contact;
 import br.com.crmcustomer.core.domain.vo.Document;
 import br.com.crmcustomer.core.domain.vo.PersonName;
-import br.com.crmcustomer.dataprovider.entity.CustomerEntity;
+import br.com.crmcustomer.dataprovider.entity.CustomerToPersist;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,8 +13,8 @@ import java.util.List;
 @Component
 public class DataproviderCustomerMapper {
 
-    public CustomerEntity toPersist(Customer customer){
-        return new CustomerEntity(
+    public CustomerToPersist toPersist(Customer customer){
+        return new CustomerToPersist(
                 customer.getName().getName(),
                 customer.getMotherName().getName(),
                 customer.getDocument().getDocumentType().getValue(),
@@ -27,16 +25,16 @@ public class DataproviderCustomerMapper {
                 customer.getAddress().getNumber()
         );
     }
-    public Customer toCustomer(CustomerEntity entity){
+    public Customer toCustomer(CustomerToPersist entity){
         return new Customer(
                 new PersonName(entity.getName()),
                 new PersonName(entity.getMotherName()),
-                new Document((DocumentType.valueOf(entity.getDocumentType())), entity.getDocumentContent()),
-                new Contact((ContactType.valueOf(entity.getContactType())), entity.getContactContent()),
+                new Document(entity.getDocumentContent()),
+                new Contact(entity.getContactContent()),
                 new Address(entity.getAddressStreet(), entity.getAddressNumber())
         );
     }
-    public List<Customer> toCustomerList(List<CustomerEntity> entityList){
+    public List<Customer> toCustomerList(List<CustomerToPersist> entityList){
         return entityList.stream().map(this::toCustomer).toList();
     }
 }
