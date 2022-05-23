@@ -19,14 +19,12 @@ public class CustomerRepositoryGateway implements CustomerRepository {
     public CustomerRepositoryGateway(CustomerJpaRepository customerJpaRepository ) {
         this.customerJpaRepository = customerJpaRepository;
     }
-
     @Override
     public Customer save(Customer customer) {
         log.info("Saving customer: " + customer);
         return customerMapper.toCustomer(
                 customerJpaRepository.save(customerMapper.toPersist(customer)));
     }
-
     @Override
     public Customer getCustomerByDocument(String documentContent) {
         log.info("Getting customer with id: " + documentContent);
@@ -34,15 +32,12 @@ public class CustomerRepositoryGateway implements CustomerRepository {
                 customerJpaRepository.findById(documentContent)
                         .orElseThrow(() -> new CustomerNotFoundException("Customer with id: " + documentContent + " not found.")));
     }
-
     @Override
     public List<Customer> listAllCustomer() {
         return customerMapper.toCustomerList(customerJpaRepository.findAll());
     }
-
     @Override
     public void deleteCustomer(String documentContent) {
         customerJpaRepository.deleteById(documentContent);
     }
-
 }

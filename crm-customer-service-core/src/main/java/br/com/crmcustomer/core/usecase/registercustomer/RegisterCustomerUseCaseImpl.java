@@ -3,7 +3,7 @@ package br.com.crmcustomer.core.usecase.registercustomer;
 import br.com.crmcustomer.core.domain.Customer;
 import br.com.crmcustomer.core.external.CustomerOutput;
 import br.com.crmcustomer.core.port.CustomerRepository;
-import br.com.crmcustomer.core.usecase.registercustomer.exception.DocumentAlreadyRegisteredException;
+import br.com.crmcustomer.core.usecase.exception.DocumentAlreadyRegisteredException;
 import br.com.crmcustomer.core.util.mapper.CustomerMapper;
 
 import java.util.logging.Logger;

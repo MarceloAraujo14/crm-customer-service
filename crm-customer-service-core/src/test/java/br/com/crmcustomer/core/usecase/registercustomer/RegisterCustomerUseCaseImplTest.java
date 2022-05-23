@@ -6,9 +6,8 @@ import br.com.crmcustomer.core.domain.vo.Contact;
 import br.com.crmcustomer.core.domain.vo.Document;
 import br.com.crmcustomer.core.domain.vo.PersonName;
 import br.com.crmcustomer.core.external.CustomerOutput;
-import br.com.crmcustomer.core.port.CustomerRepository;
 import br.com.crmcustomer.core.repository.CustomerTestRepository;
-import br.com.crmcustomer.core.usecase.registercustomer.exception.DocumentAlreadyRegisteredException;
+import br.com.crmcustomer.core.usecase.exception.DocumentAlreadyRegisteredException;
 import br.com.crmcustomer.core.util.mapper.CustomerMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -82,8 +81,8 @@ class RegisterCustomerUseCaseImplTest {
         //when
         when(repository.getCustomerByDocument(documentContent)).thenReturn(customerTest);
         //then
-        verify(repository, times(1)).getCustomerByDocument(documentContent);
         assertThatThrownBy(() -> underTest.registerNewCustomer(customerInputTest)).isInstanceOf(DocumentAlreadyRegisteredException.class)
                 .hasMessageContaining("Customer with the document " + documentContent + " already registered.");
+        verify(repository, times(1)).getCustomerByDocument(documentContent);
     }
 }
