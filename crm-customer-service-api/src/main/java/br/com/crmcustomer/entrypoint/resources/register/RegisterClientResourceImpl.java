@@ -3,6 +3,7 @@ package br.com.crmcustomer.entrypoint.resources.register;
 import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;
 import br.com.crmcustomer.entrypoint.mapper.ResourceCustomerMapper;
 import br.com.crmcustomer.entrypoint.response.CustomerResponse;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ public class RegisterClientResourceImpl implements RegisterClientResource {
     private final ResourceCustomerMapper converter;
 
     @Override
+    @ApiOperation(value = "Creates a new register information about customer.")
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<CustomerResponse> registerNewCustomer(@RequestBody RegisterCustomerRequest registerCustomerRequest){
         log.info("Registering customer: {}", registerCustomerRequest);

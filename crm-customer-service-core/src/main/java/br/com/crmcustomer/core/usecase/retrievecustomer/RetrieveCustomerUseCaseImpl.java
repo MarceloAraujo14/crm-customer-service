@@ -21,7 +21,7 @@ public class RetrieveCustomerUseCaseImpl implements RetrieveCustomerUseCase{
     @Override
     public CustomerOutput retrieveCustomerById(String documentContent) {
         String logg = String.format("Retrieving customer with id: %s", documentContent);
-        if(customerRepository.getCustomerByDocument(documentContent) == null){
+        if(Boolean.FALSE.equals(customerRepository.existsByDocument(documentContent))){
             throw new CustomerNotFoundException("Customer with the document " + documentContent + " not found.");
         }
         log.info(logg);

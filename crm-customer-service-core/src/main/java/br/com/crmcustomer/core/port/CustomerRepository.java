@@ -12,6 +12,8 @@ public interface CustomerRepository {
 
     List<Customer> listAllCustomer();
 
+    boolean existsByDocument(String documentContent);
+
     void deleteCustomer(String documentContent);
 
 }

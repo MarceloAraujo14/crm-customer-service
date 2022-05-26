@@ -1,4 +1,4 @@
-package br.com.crmcustomer.entrypoint.config;
+package br.com.crmcustomer.entrypoint.config.usecases;
 
 import br.com.crmcustomer.core.port.CustomerRepository;
 import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;

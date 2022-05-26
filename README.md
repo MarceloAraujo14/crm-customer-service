@@ -34,7 +34,17 @@ Containerized Postgres database and PgAdmin.
 - Postman
 Use to make API calls to Application Endpoints.
 
+- Swagger
+Use to document the api.
+
 ## Running the application
+
+### Run Docker-Compose
+```
+Run $ docker-compose up -d
+on docker dir to run the postgresql database and pgadmin
+```
+### Running the project
 ```
 Clone the project, open the folder on IDE and run it.
 ```
@@ -59,9 +69,7 @@ consumes/produces = "application/json"
 {
     "name": "Jhon Doe",
     "motherName": "Gina Doe",
-    "documentType": "RG",
     "documentContent": "132456789",
-    "contactType": "PHONE",
     "contactContent": "(21) 98999-9999",
     "addressStreet": "Rua do A",
     "addressNumber": "32B"

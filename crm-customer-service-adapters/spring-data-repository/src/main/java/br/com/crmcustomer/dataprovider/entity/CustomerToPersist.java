@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity(name = "customer")
+@Entity/*(name = "customer")*/
 @Table(name = "tb_customer")
 @Getter
 @Setter
@@ -21,10 +21,10 @@ public class CustomerToPersist {
     private String motherName;
     @Column(name = "doc_type", nullable = false, length = 10)
     private String documentType;
-    @Column(name = "doc_content", nullable = false, length = 14)
+    @Column(name = "doc_content", nullable = false, length = 14, unique = true)
     @Id
     private String documentContent;
-    @Column(name = "contact_type", nullable = false, length = 10, unique = true)
+    @Column(name = "contact_type", nullable = false, length = 10)
     private String contactType;
     @Column(name = "contact_content", nullable = false, length = 50)
     private String contactContent;
