@@ -10,9 +10,7 @@ import lombok.ToString;
 public class RegisterCustomerRequest {
     private String name;
     private String motherName;
-    private String documentType;
     private String documentContent;
-    private String contactType;
     private String contactContent;
     private String addressStreet;
     private String addressNumber;

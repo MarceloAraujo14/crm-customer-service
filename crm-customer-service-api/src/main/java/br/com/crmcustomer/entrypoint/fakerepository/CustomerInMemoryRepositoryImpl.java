@@ -10,7 +10,7 @@ import java.util.List;
 @Log4j2
 public class CustomerInMemoryRepositoryImpl implements CustomerRepository {
 
-    private List<Customer> customerList = new ArrayList<>();
+    private final List<Customer> customerList = new ArrayList<>();
 
     @Override
     public Customer save(Customer customer) {
@@ -27,6 +27,11 @@ public class CustomerInMemoryRepositoryImpl implements CustomerRepository {
     @Override
     public List<Customer> listAllCustomer() {
         return this.customerList;
+    }
+
+    @Override
+    public boolean existsByDocument(String documentContent) {
+        return true;
     }
 
     @Override

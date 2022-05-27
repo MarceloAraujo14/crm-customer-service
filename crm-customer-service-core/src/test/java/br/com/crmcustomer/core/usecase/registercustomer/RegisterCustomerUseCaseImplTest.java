@@ -45,9 +45,7 @@ class RegisterCustomerUseCaseImplTest {
         customerInputTest = new RegisterCustomerInput(
                 "Jhon Doe",
                 "Gina Doe",
-                "CPF",
                 "01234567890",
-                "PHONE",
                 "(21) 98558-9999",
                 "Street A",
                 "25A"
@@ -79,10 +77,10 @@ class RegisterCustomerUseCaseImplTest {
         //given
         String documentContent = "01234567890";
         //when
-        when(repository.getCustomerByDocument(documentContent)).thenReturn(customerTest);
+        when(repository.existsByDocument(documentContent)).thenReturn(true);
         //then
         assertThatThrownBy(() -> underTest.registerNewCustomer(customerInputTest)).isInstanceOf(DocumentAlreadyRegisteredException.class)
                 .hasMessageContaining("Customer with the document " + documentContent + " already registered.");
-        verify(repository, times(1)).getCustomerByDocument(documentContent);
+        verify(repository, times(1)).existsByDocument(documentContent);
     }
 }

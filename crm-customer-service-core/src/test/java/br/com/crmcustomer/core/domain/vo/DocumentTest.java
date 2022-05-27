@@ -31,8 +31,8 @@ class DocumentTest {
     }
     @ParameterizedTest
     @CsvSource(value = {
-            "0123456789,CPF document must contain 11 digits.",
-            "'',Document content can't be empty.", "0123456789, RG document must contain 9 digits."}, delimiter = ',')
+            "0123456789,Document have wrong number of digits",
+            "'',Document have wrong number of digits", "0123456789, Document have wrong number of digits"}, delimiter = ',')
     void shouldThrowWhenDocumentHasError(String cpf, String expectedMessage){
         assertThatThrownBy(() -> new Document(cpf)).isInstanceOf(InvalidDocumentException.class)
                 .hasMessageContaining(expectedMessage);

@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: kafka-customer-producer
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+kafka:
+  topic:
+    register-customer: register_crm_customer

@@ -1,0 +1,29 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: kafka-customer-consumer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crmservice
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: crm_customer
+      auto-offset-reset: earliest
+      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+kafka:
+  topic:
+    register-customer: register_crm_customer

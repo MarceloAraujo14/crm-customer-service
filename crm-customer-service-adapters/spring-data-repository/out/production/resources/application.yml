@@ -4,10 +4,18 @@ spring:
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
+  flyway:
+    locations: "classpath:db/migration"
+    baseline-on-migrate: false
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+#flyway:
+#  validate-on-migrate: false
+#  encoding: utf-8mb4
+#  out-of-order: true

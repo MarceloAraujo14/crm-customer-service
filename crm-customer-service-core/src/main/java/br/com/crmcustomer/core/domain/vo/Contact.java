@@ -41,7 +41,8 @@ public class Contact {
     }
 
     private ContactType defineContactType(String contactContent){
-        if(contactContent.contains("@")) return EMAIL;
+        if(contactContent.contains("@") || contactContent.contains(".com")
+                || contactContent.contains(".br") || contactContent.contains(".org")) return EMAIL;
         return PHONE;
     }
 }

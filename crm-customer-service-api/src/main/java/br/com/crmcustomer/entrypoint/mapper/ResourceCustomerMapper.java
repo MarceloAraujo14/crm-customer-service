@@ -15,8 +15,8 @@ public class ResourceCustomerMapper {
         return new RegisterCustomerInput(
                 request.getName(),
                 request.getMotherName(),
-                request.getDocumentType(), request.getDocumentContent(),
-                request.getContactType(), request.getContactContent(),
+                request.getDocumentContent(),
+                request.getContactContent(),
                 request.getAddressStreet(), request.getAddressNumber());
     }
     public CustomerResponse toResponse(CustomerOutput output){

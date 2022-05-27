@@ -22,6 +22,11 @@ public class CustomerTestRepository implements CustomerRepository {
     }
 
     @Override
+    public boolean existsByDocument(String documentContent) {
+        return true;
+    }
+
+    @Override
     public void deleteCustomer(String documentContent) {
 
     }

@@ -19,13 +19,19 @@ repositories {
 }
 
 dependencies {
+    implementation project(':crm-customer-service-core')
+    implementation project(':crm-customer-service-adapters:spring-data-repository')
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation project(':crm-customer-service-core')
-    implementation project(':crm-customer-service-adapters:spring-data-repository')
+
 }
 
 tasks.named('test') {

@@ -3,6 +3,7 @@ package br.com.crmcustomer.entrypoint.resources.retrieve;
 import br.com.crmcustomer.core.usecase.retrievecustomer.RetrieveCustomerUseCase;
 import br.com.crmcustomer.entrypoint.mapper.ResourceCustomerMapper;
 import br.com.crmcustomer.entrypoint.response.CustomerResponse;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +24,15 @@ public class RetrieveCustomerResourceImpl implements RetrieveCustomerResource {
     private final ResourceCustomerMapper converter;
 
     @Override
-    @GetMapping("/{id}")
+    @ApiOperation(value = "Retrieve a register information about one customer with the specified document.")
+    @GetMapping("/{documentContent}")
     public ResponseEntity<CustomerResponse> retrieveCustomerById(@PathVariable String documentContent) {
         return ResponseEntity.ok(
                 converter.toResponse(
                         retrieveCustomerUseCase.retrieveCustomerById(documentContent)));
     }
     @Override
+    @ApiOperation(value = "Retrieve register information about all customer")
     @GetMapping
     public ResponseEntity<List<CustomerResponse>> retrieveAllCustomers() {
         return ResponseEntity.ok(
