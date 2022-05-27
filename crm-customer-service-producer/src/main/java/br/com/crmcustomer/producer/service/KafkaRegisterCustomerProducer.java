@@ -1,5 +1,6 @@
 package br.com.crmcustomer.producer.service;
 
+import br.com.crmcustomer.producer.model.RegisterCustomerModel;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,12 +15,12 @@ public class KafkaRegisterCustomerProducer {
     private String registerCustomerTopic;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, RegisterCustomerModel> kafkaTemplate;
 
-    public void sendRegisterCustomerInformation(String message){
-        this.kafkaTemplate.send(registerCustomerTopic, message);
-        log.info("Sending message to topic: {}", registerCustomerTopic);
-        log.info("Message: {}", message);
+    public void sendRegisterCustomerInformation(RegisterCustomerModel customerModel){
+        this.kafkaTemplate.send(registerCustomerTopic, customerModel);
+        log.info("Sending customer information to topic: {}", registerCustomerTopic);
+        log.info("Customer: {}", customerModel);
     }
 
 }

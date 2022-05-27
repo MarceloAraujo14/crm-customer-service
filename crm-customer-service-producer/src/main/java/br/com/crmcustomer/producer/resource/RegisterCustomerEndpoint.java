@@ -1,5 +1,6 @@
 package br.com.crmcustomer.producer.resource;
 
+import br.com.crmcustomer.producer.model.RegisterCustomerModel;
 import br.com.crmcustomer.producer.service.KafkaRegisterCustomerProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,10 +13,10 @@ public class RegisterCustomerEndpoint {
     @Autowired
     private KafkaRegisterCustomerProducer producer;
 
-    @PostMapping("/message")
-    public String sendRegisterCustomer(@RequestBody String message){
-        producer.sendRegisterCustomerInformation(message);
-        return message;
+    @PostMapping(value = "/customer", consumes = "application/json")
+    public String sendRegisterCustomer(@RequestBody RegisterCustomerModel model){
+        producer.sendRegisterCustomerInformation(model);
+        return model.toString();
     }
 
 }
