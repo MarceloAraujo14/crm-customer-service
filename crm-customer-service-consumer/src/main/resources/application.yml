@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: kafka-customer-consumer
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: crm_customer
+      auto-offset-reset: earliest
+#      serializer:
+
+kafka:
+  topic:
+    register-customer: register_crm_customer

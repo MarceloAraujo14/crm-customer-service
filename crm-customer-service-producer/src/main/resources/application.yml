@@ -1,0 +1,13 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: kafka-customer-producer
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+
+kafka:
+  topic:
+    register-customer: register_crm_customer
