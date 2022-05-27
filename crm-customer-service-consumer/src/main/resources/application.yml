@@ -1,6 +1,20 @@
+server:
+  port: 8100
 spring:
   application:
     name: kafka-customer-consumer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crmservice
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   kafka:
     consumer:
