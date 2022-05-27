@@ -13,40 +13,47 @@ Technology applied:
 - Java 17
 - Gradle
 
-- Spring Web
+- Spring Web: 
 Used to expose API endpoints through a Rest Controller.
 
-- Spring Data Jpa
+- Spring Data Jpa: 
 Used to configure and persist data on SQL database.
 
-- Postgres
+- Postgres: 
 Database used to store customer information.
 
-- Lombok
+- Lombok: 
 Anotations to reduce the boilerplate code.
 
-- JUnit 5
+- JUnit 5: 
 To perform unit and integration tests.
 
-- Docker
-Containerized Postgres database and PgAdmin.
+- Docker: 
+Containerized Postgres database, PgAdmin, Zookeeper and Kafka broker.
 
-- Postman
+- Postman: 
 Use to make API calls to Application Endpoints.
 
-- Swagger
+- Swagger: 
 Use to document the api.
+
+- Spring Kafka:
+Communication assync through Kafka topics
+
 
 ## Running the application
 
 ### Run Docker-Compose
 ```
 Run $ docker-compose up -d
-on docker dir to run the postgresql database and pgadmin
+on docker dir to run the postgresql database, pgadmin and kafka
 ```
 ### Running the project
 ```
-Clone the project, open the folder on IDE and run it.
+Clone the project, open the folder on IDE.
+run the main class crm-customer-service-api
+run the main class crm-customer-service-producer
+run the main class crm-customer-service-consumer
 ```
 ### Build and run Gradle
 ```
