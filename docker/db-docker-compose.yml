@@ -1,0 +1,43 @@
+services:
+
+  postgres-db:
+    container_name: postgres-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: crmservice
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - /postgres/data/postgres
+    networks:
+      - postgres-network
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+    restart: unless-stopped
+    ports:
+      - "16543:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - postgres-network
+
+
+
+
+volumes:
+  data: { }
+
+networks:
+  postgres-network:
+    driver: bridge

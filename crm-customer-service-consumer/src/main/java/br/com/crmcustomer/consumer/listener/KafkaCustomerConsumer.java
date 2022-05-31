@@ -1,7 +1,7 @@
 package br.com.crmcustomer.consumer.listener;
 
+import br.com.crmcustomer.producer.schema.RegisterCustomerRecord;
 import br.com.crmcustomer.consumer.mapper.KafkaCustomerModelMapper;
-import br.com.crmcustomer.consumer.model.RegisterCustomerPayload;
 import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class KafkaCustomerConsumer {
     @KafkaListener(
             topics = "${kafka.topic.register-customer}",
             groupId = "${spring.kafka.consumer.group-id}")
-    void registerCustomerEvent(RegisterCustomerPayload customerPayload){
+    void registerCustomerEvent(RegisterCustomerRecord customerPayload){
         registerCustomerUseCase.registerNewCustomer(mapper.toInput(customerPayload));
         log.info("Receiving customer information: {}", customerPayload);
     }

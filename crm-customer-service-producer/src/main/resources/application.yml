@@ -5,10 +5,21 @@ spring:
     name: kafka-customer-producer
 
   kafka:
+    bootstrap-servers:
+      - "localhost:9092"
     producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        auto:
+          register:
+            schemas: "true"
+        schema:
+          registry:
+            url: "http://localhost:8081"
+        specific:
+          avro:
+            reader: "true"
 
 kafka:
   topic:
