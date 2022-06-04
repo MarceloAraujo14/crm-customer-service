@@ -1,0 +1,12 @@
+apply from: "${rootProject.rootDir}//deploy/gradle/kafka.gradle"
+
+group 'br.com.crm-customer-service'
+
+
+dependencies {
+    implementation project(':crm-customer-service-adapters:kafka-avro')
+    implementation project(':crm-customer-service-core')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+}

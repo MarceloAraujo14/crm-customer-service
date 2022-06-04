@@ -1,20 +1,50 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.7.0'
+    }
+}
+
 plugins {
     id 'java'
+    id 'idea'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        compileOnly('org.projectlombok:lombok:1.18.24')
+        annotationProcessor('org.projectlombok:lombok:1.18.24')
+
+        testCompileOnly('org.projectlombok:lombok:1.18.24')
+        testAnnotationProcessor('org.projectlombok:lombok:1.18.24')
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+        testCompileOnly('org.junit.jupiter:junit-jupiter-params:5.8.2')
+        testImplementation 'org.mockito:mockito-junit-jupiter:4.5.1'
+        testImplementation 'org.assertj:assertj-core:3.22.0'
+
+    }
+    test{
+        useJUnitPlatform()
+    }
+
 }
 
 group 'br.com.crm-customer-service'
 version '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-
-}
-
-
-test {
-    useJUnitPlatform()
-}

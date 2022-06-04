@@ -1,0 +1,15 @@
+apply plugin: 'org.springframework.boot'
+
+
+dependencies {
+    implementation 'org.springframework.kafka:spring-kafka'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+    implementation 'org.apache.avro:avro:1.11.0'
+}
+
+
+repositories {
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
