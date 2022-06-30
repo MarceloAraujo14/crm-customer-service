@@ -1,8 +1,7 @@
 package br.com.crmcustomer.producer.resource;
 
-import br.com.crmcustomer.producer.model.RegisterCustomerModel;
+import br.com.crmcustomer.avro.schema.RegisterCustomerEvent;
 import br.com.crmcustomer.producer.service.KafkaRegisterCustomerProducer;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,12 +17,11 @@ public class RegisterCustomerEndpoint {
     private KafkaRegisterCustomerProducer producer;
 
     @PostMapping(value = "/customer", consumes = "application/json")
-    public String sendRegisterCustomer(@RequestBody RegisterCustomerModel model){
-        String logg = String.format("Recebendo dados do usuário %s", model);
+    public String sendRegisterCustomer(@RequestBody RegisterCustomerEvent registerCustomerEvent){
+        String logg = String.format("Enviando dados do usuário %s", registerCustomerEvent);
         log.info(logg);
-
-        producer.sendRegisterCustomerInformation(model);
-        return model.toString();
+        producer.sendRegisterCustomerInformation(registerCustomerEvent);
+        return registerCustomerEvent.toString();
     }
 
 }

@@ -1,11 +1,12 @@
 package br.com.crmcustomer.consumer.listener;
 
-import br.com.crmcustomer.consumer.mapper.KafkaCustomerModelMapper;
-import br.com.crmcustomer.consumer.model.RegisterCustomerPayload;
+import br.com.crmcustomer.avro.schema.RegisterCustomerEvent;
+import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerInput;
 import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,19 +14,34 @@ import org.springframework.stereotype.Service;
 public class KafkaCustomerConsumer {
 
     private final RegisterCustomerUseCase registerCustomerUseCase;
-    private final KafkaCustomerModelMapper mapper;
 
     @Autowired
-    public KafkaCustomerConsumer(RegisterCustomerUseCase registerCustomerUseCase, KafkaCustomerModelMapper mapper) {
+    public KafkaCustomerConsumer(RegisterCustomerUseCase registerCustomerUseCase) {
         this.registerCustomerUseCase = registerCustomerUseCase;
-        this.mapper = mapper;
     }
 
     @KafkaListener(
             topics = "${kafka.topic.register-customer}",
             groupId = "${spring.kafka.consumer.group-id}")
-    void registerCustomerEvent(RegisterCustomerPayload customerPayload){
-        registerCustomerUseCase.registerNewCustomer(mapper.toInput(customerPayload));
-        log.info("Receiving customer information: {}", customerPayload);
+    void registerCustomerEvent(RegisterCustomerEvent registerCustomerEvent, Acknowledgment acknowledgment){
+        try{
+            registerCustomerUseCase.registerNewCustomer(toInput(registerCustomerEvent));
+            acknowledgment.acknowledge();
+            log.info("Receiving customer information: {}", registerCustomerEvent);
+        }
+        catch (Exception ex){
+            log.error(ex.getMessage());
+        }
+    }
+
+    public RegisterCustomerInput toInput(RegisterCustomerEvent registerCustomerEvent){
+        return new RegisterCustomerInput(
+                registerCustomerEvent.getName(),
+                registerCustomerEvent.getMotherName(),
+                registerCustomerEvent.getDocumentContent(),
+                registerCustomerEvent.getContactContent(),
+                registerCustomerEvent.getAddressStreet(),
+                registerCustomerEvent.getAddressNumber()
+        );
     }
 }

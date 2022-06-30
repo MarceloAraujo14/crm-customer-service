@@ -1,33 +1,37 @@
-
-
 {
+  "name": "RegisterCustomerEvent",
   "type": "record",
-  "name": "RegisterCustomerRecord",
   "namespace": "br.com.crmcustomer.avro.schema",
   "fields": [
     {
       "name": "name",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     },
     {
       "name": "mother_name",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     },
     {
       "name": "document_content",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     },
     {
       "name": "contact_content",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     },
     {
       "name": "address_street",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     },
     {
       "name": "address_number",
-      "type": "string"
+      "type": "string",
+      "avro.java.string": "String"
     }
   ]
 }

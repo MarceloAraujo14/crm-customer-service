@@ -7,8 +7,8 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
-      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:  io.confluent.kafka.serializers.AbstractKafkaAvroSeserializer
 
 kafka:
   topic:

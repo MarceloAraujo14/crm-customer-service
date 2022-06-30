@@ -5,6 +5,13 @@ plugins {
     id 'java'
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
+
 group = 'br.com.crmcustomer-service'
 version = '0.0.1-SNAPSHOT'
 
@@ -15,7 +22,7 @@ dependencies {
 }
 
 generateAvroJava {
-    source("${projectDir}/src/main/resources/avro")
+    source("${projectDir}/src/main/avro")
 }
 
 bootJar {
