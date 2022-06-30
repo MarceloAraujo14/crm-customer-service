@@ -4,6 +4,7 @@ include 'crm-customer-service-core'
 include 'crm-customer-service-api'
 include 'crm-customer-service-adapters'
 include 'crm-customer-service-adapters:spring-data-repository'
+include 'crm-customer-service-adapters:kafka-avro'
 include 'crm-customer-service-consumer'
 include 'crm-customer-service-producer'
 
