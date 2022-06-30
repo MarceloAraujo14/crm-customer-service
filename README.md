@@ -40,6 +40,8 @@ Use to document the api.
 - Spring Kafka:
 Communication assync through Kafka topics
 
+- Confluent Schema Registry: 
+
 
 ## Running the application
 

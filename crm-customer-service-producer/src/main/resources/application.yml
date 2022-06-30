@@ -1,15 +1,22 @@
 server:
-  port: 8090
+  port: '8090'
 spring:
   application:
-    name: kafka-customer-producer
+    name: 'kafka-customer-producer'
 
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer:  io.confluent.kafka.serializers.AbstractKafkaAvroSeserializer
+      bootstrap-servers: 'localhost:9092'
+      key-serializer: 'org.apache.kafka.common.serialization.StringSerializer'
+      value-serializer:  'io.confluent.kafka.serializers.KafkaAvroSerializer'
+      properties:
+        schema:
+          registry:
+            url: "http://localhost:8081"
+        specific:
+          avro:
+            reader: true
 
 kafka:
   topic:
-    register-customer: register_crm_customer
+    register-customer: 'register_crm_customer'

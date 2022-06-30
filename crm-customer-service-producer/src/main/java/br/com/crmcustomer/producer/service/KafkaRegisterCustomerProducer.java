@@ -16,7 +16,8 @@ public class KafkaRegisterCustomerProducer {
     private String registerCustomerTopic;
 
     @Autowired
-    private KafkaTemplate<String, RegisterCustomerEvent> kafkaTemplate;
+    private KafkaTemplate<Object, Object> kafkaTemplate;
+
 
     public void sendRegisterCustomerInformation(RegisterCustomerEvent registerCustomerEvent){
         this.kafkaTemplate.send(registerCustomerTopic, registerCustomerEvent.getDocumentContent(),registerCustomerEvent);

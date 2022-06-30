@@ -1,5 +1,6 @@
 package br.com.crmcustomer.producer.factory;
 
+import br.com.crmcustomer.avro.schema.RegisterCustomerEvent;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,8 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProducerFactory<Object, Object> producerFactory(KafkaProperties kafkaProperties){
-        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildConsumerProperties());
+
+        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties());
     }
 
     @Bean

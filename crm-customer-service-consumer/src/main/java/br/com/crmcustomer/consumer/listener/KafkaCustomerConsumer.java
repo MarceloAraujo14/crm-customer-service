@@ -23,16 +23,17 @@ public class KafkaCustomerConsumer {
     @KafkaListener(
             topics = "${kafka.topic.register-customer}",
             groupId = "${spring.kafka.consumer.group-id}")
-    void registerCustomerEvent(RegisterCustomerEvent registerCustomerEvent, Acknowledgment acknowledgment){
+    void registerCustomerEvent(RegisterCustomerEvent registerCustomerEvent/*, Acknowledgment acknowledgment*/){
         try{
             registerCustomerUseCase.registerNewCustomer(toInput(registerCustomerEvent));
-            acknowledgment.acknowledge();
+//            acknowledgment.acknowledge();
             log.info("Receiving customer information: {}", registerCustomerEvent);
         }
         catch (Exception ex){
             log.error(ex.getMessage());
         }
     }
+
 
     public RegisterCustomerInput toInput(RegisterCustomerEvent registerCustomerEvent){
         return new RegisterCustomerInput(
