@@ -1,20 +1,19 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
 
 group 'br.com.crm-customer-service'
 version '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+subprojects{
 
-repositories {
-    mavenCentral()
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://packages.confluent.io/maven"
+        }
+    }
+
 }
-
-dependencies {
-
-
-}
-
 tasks.named('test') {
     useJUnitPlatform()
 }
+
