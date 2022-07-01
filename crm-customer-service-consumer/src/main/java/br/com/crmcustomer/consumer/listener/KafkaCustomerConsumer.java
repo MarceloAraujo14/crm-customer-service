@@ -6,7 +6,6 @@ import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerUseCase;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,10 +22,9 @@ public class KafkaCustomerConsumer {
     @KafkaListener(
             topics = "${kafka.topic.register-customer}",
             groupId = "${spring.kafka.consumer.group-id}")
-    void registerCustomerEvent(RegisterCustomerEvent registerCustomerEvent/*, Acknowledgment acknowledgment*/){
+    void registerCustomerEvent(RegisterCustomerEvent registerCustomerEvent){
         try{
             registerCustomerUseCase.registerNewCustomer(toInput(registerCustomerEvent));
-//            acknowledgment.acknowledge();
             log.info("Receiving customer information: {}", registerCustomerEvent);
         }
         catch (Exception ex){
