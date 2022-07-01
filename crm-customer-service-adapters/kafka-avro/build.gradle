@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.3.0"
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
+
+group = 'br.com.crmcustomer-service'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation 'org.apache.avro:avro:1.11.0'
+    implementation 'org.springframework.kafka:spring-kafka'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+generateAvroJava {
+    source("${projectDir}/src/main/avro")
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
+

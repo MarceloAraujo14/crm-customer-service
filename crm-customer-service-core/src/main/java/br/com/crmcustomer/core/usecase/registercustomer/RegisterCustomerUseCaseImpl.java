@@ -21,7 +21,7 @@ public class RegisterCustomerUseCaseImpl implements RegisterCustomerUseCase {
 
     @Override
     public CustomerOutput registerNewCustomer(RegisterCustomerInput registerCustomerInput) {
-        String documentContent = registerCustomerInput.getDocumentContent();
+        String documentContent = registerCustomerInput.documentContent();
         if(customerRepository.existsByDocument(documentContent)){
             throw new DocumentAlreadyRegisteredException("Customer with the document " + documentContent + " already registered.");
         }

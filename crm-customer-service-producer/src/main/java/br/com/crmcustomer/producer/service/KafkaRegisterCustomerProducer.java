@@ -1,26 +1,30 @@
 package br.com.crmcustomer.producer.service;
 
-import br.com.crmcustomer.producer.model.RegisterCustomerModel;
-import lombok.extern.log4j.Log4j2;
+import br.com.crmcustomer.avro.schema.RegisterCustomerEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Logger;
+
 @Service
-@Log4j2
 public class KafkaRegisterCustomerProducer {
 
+    private final Logger log = Logger.getLogger(KafkaRegisterCustomerProducer.class.getName());
     @Value(value = "${kafka.topic.register-customer}")
     private String registerCustomerTopic;
 
     @Autowired
-    private KafkaTemplate<String, RegisterCustomerModel> kafkaTemplate;
+    private KafkaTemplate<Object, Object> kafkaTemplate;
 
-    public void sendRegisterCustomerInformation(RegisterCustomerModel customerModel){
-        this.kafkaTemplate.send(registerCustomerTopic, customerModel);
-        log.info("Sending customer information to topic: {}", registerCustomerTopic);
-        log.info("Customer: {}", customerModel);
+
+    public void sendRegisterCustomerInformation(RegisterCustomerEvent registerCustomerEvent){
+        this.kafkaTemplate.send(registerCustomerTopic, registerCustomerEvent.getDocumentContent(),registerCustomerEvent);
+        String logg = String.format("Sending customer information to topic: %s", registerCustomerTopic);
+        log.info(logg);
+        logg = String.format("Customer: " +  registerCustomerEvent);
+        log.info(logg);
     }
 
 }

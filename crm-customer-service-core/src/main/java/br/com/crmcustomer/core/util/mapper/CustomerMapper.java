@@ -14,11 +14,11 @@ public class CustomerMapper {
 
     public Customer toCustomer(RegisterCustomerInput input){
         return new Customer(
-                new PersonName(input.getName()),
-                new PersonName(input.getMotherName()),
-                new Document(input.getDocumentContent()),
-                new Contact(input.getContactContent()),
-                new Address(input.getAddressStreet(), input.getAddressNumber())
+                new PersonName(input.name()),
+                new PersonName(input.motherName()),
+                new Document(input.documentContent()),
+                new Contact(input.contactContent()),
+                new Address(input.addressStreet(), input.addressNumber())
         );
     }
     public CustomerOutput toOutput(Customer customer) {

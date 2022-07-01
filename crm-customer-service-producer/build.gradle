@@ -9,12 +9,22 @@ version '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
 }
 
 dependencies {
+    implementation project(':crm-customer-service-adapters:kafka-avro')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'io.confluent:kafka-avro-serializer:7.1.1'
+    implementation 'org.apache.avro:avro:1.11.0'
+
+
     implementation 'org.projectlombok:lombok:1.18.24'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
