@@ -13,6 +13,9 @@ public class CustomerOutput {
     private String addressStreet;
     private String addressNumber;
 
+    public CustomerOutput() {
+    }
+
     public CustomerOutput(String name,
                           String motherName,
                           String documentType,

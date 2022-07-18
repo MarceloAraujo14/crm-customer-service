@@ -10,7 +10,6 @@ repositories {
     mavenCentral()
 }
 
-
 test {
     useJUnitPlatform()
 }

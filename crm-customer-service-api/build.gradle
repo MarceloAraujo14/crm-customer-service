@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation project(':crm-customer-service-core')
     implementation project(':crm-customer-service-adapters:spring-data-repository')
+    implementation project(':crm-customer-service-adapters:spring-redis-cache')
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'

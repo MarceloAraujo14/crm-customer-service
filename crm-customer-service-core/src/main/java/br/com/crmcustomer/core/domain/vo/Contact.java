@@ -2,6 +2,8 @@ package br.com.crmcustomer.core.domain.vo;
 
 import br.com.crmcustomer.core.domain.enums.ContactType;
 
+import java.io.Serializable;
+
 import static br.com.crmcustomer.core.domain.enums.ContactType.EMAIL;
 import static br.com.crmcustomer.core.domain.enums.ContactType.PHONE;
 import static br.com.crmcustomer.core.util.format.Formatter.formatEmail;
@@ -9,7 +11,7 @@ import static br.com.crmcustomer.core.util.format.Formatter.formatPhone;
 import static br.com.crmcustomer.core.util.validation.EmailValidator.validadeEmail;
 import static br.com.crmcustomer.core.util.validation.PhoneNumberValidator.validadePhone;
 
-public class Contact {
+public class Contact implements Serializable {
 
     private final ContactType contactType;
     private final String contactContent;

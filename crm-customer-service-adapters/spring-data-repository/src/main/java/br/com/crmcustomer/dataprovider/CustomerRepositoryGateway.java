@@ -6,6 +6,7 @@ import br.com.crmcustomer.core.port.CustomerRepository;
 import br.com.crmcustomer.dataprovider.mapper.DataproviderCustomerMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class CustomerRepositoryGateway implements CustomerRepository {
     }
 
     @Override
+    @Cacheable(cacheNames = "Customer", key = "#documentContent")
     public Customer getCustomerByDocument(String documentContent) {
         log.info("Getting customer with id: " + documentContent);
         return customerMapper.toCustomer(

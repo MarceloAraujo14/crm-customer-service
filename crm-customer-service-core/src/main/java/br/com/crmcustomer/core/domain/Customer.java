@@ -5,9 +5,10 @@ import br.com.crmcustomer.core.domain.vo.Contact;
 import br.com.crmcustomer.core.domain.vo.PersonName;
 import br.com.crmcustomer.core.domain.vo.Document;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer {
+public class Customer implements Serializable {
 
     private PersonName name;
     private PersonName motherName;
