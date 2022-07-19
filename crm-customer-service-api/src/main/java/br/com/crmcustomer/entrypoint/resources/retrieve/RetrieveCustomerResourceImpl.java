@@ -6,6 +6,8 @@ import br.com.crmcustomer.entrypoint.response.CustomerResponse;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/customer")
 @Log4j2
+@EnableCaching
 public class RetrieveCustomerResourceImpl implements RetrieveCustomerResource {
 
     private final RetrieveCustomerUseCase retrieveCustomerUseCase;
@@ -27,6 +30,7 @@ public class RetrieveCustomerResourceImpl implements RetrieveCustomerResource {
     @ApiOperation(value = "Retrieve a register information about one customer with the specified document.")
     @GetMapping("/{documentContent}")
     public ResponseEntity<CustomerResponse> retrieveCustomerById(@PathVariable String documentContent) {
+        log.info("Retrieving Customer Register with document: {}", documentContent);
         return ResponseEntity.ok(
                 converter.toResponse(
                         retrieveCustomerUseCase.retrieveCustomerById(documentContent)));

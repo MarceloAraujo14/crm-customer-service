@@ -3,9 +3,11 @@ package br.com.crmcustomer.core.domain.vo;
 import br.com.crmcustomer.core.domain.enums.DocumentType;
 import br.com.crmcustomer.core.domain.exception.InvalidDocumentException;
 
+import java.io.Serializable;
+
 import static br.com.crmcustomer.core.util.validation.DocumentValidator.validateDocument;
 
-public class Document {
+public class Document implements Serializable {
 
     private final DocumentType documentType;
     private final String documentContent;

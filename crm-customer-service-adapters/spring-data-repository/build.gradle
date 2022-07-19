@@ -25,6 +25,7 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
 
     implementation project(':crm-customer-service-core')
+    implementation project(':crm-customer-service-adapters:spring-redis-cache')
 }
 
 tasks.named('test') {
