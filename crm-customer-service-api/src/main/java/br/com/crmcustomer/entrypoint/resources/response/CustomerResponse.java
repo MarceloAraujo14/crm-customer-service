@@ -1,4 +1,4 @@
-package br.com.crmcustomer.entrypoint.response;
+package br.com.crmcustomer.entrypoint.resources.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @JsonIgnoreProperties
-public class CustomerResponse implements Serializable {
+public class CustomerResponse {
 
     public CustomerResponse() {
     }

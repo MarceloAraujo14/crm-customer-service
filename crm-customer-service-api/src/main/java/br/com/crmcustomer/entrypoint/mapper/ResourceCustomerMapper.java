@@ -2,8 +2,8 @@ package br.com.crmcustomer.entrypoint.mapper;
 
 import br.com.crmcustomer.core.external.CustomerOutput;
 import br.com.crmcustomer.core.usecase.registercustomer.RegisterCustomerInput;
-import br.com.crmcustomer.entrypoint.resources.register.RegisterCustomerRequest;
-import br.com.crmcustomer.entrypoint.response.CustomerResponse;
+import br.com.crmcustomer.entrypoint.resources.request.RegisterCustomerRequest;
+import br.com.crmcustomer.entrypoint.resources.response.CustomerResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
