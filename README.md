@@ -42,6 +42,8 @@ Communication assync through Kafka topics
 
 - Confluent Schema Registry: 
 
+- Redis Cache Database : quick access to customer information instead of consulting the relational database.
+
 
 ## Running the application
 
