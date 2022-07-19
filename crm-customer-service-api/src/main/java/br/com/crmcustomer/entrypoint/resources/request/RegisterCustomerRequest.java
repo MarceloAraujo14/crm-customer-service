@@ -1,4 +1,4 @@
-package br.com.crmcustomer.entrypoint.resources.register;
+package br.com.crmcustomer.entrypoint.resources.request;
 
 import lombok.Getter;
 import lombok.Setter;

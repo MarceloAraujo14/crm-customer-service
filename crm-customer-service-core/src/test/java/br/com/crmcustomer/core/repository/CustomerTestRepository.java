@@ -30,4 +30,9 @@ public class CustomerTestRepository implements CustomerRepository {
     public void deleteCustomer(String documentContent) {
 
     }
+
+    @Override
+    public void clearCache() {
+
+    }
 }

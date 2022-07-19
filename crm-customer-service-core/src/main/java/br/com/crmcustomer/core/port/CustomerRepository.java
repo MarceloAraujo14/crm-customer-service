@@ -16,4 +16,5 @@ public interface CustomerRepository {
 
     void deleteCustomer(String documentContent);
 
+    void clearCache();
 }

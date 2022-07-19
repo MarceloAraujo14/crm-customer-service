@@ -38,4 +38,9 @@ public class CustomerInMemoryRepositoryImpl implements CustomerRepository {
     public void deleteCustomer(String documentContent) {
         this.customerList.clear();
     }
+
+    @Override
+    public void clearCache() {
+
+    }
 }
