@@ -31,6 +31,18 @@ spring:
           avro:
             reader: true
 
+  #Cache Configuration
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 1000ms
+    time-to-live: 3600
+    key-prefix: crm-customer-service
+
 kafka:
   topic:
     register-customer: register_crm_customer
+
+

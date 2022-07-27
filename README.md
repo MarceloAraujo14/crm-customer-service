@@ -36,6 +36,7 @@ Use to make API calls to Application Endpoints.
 
 - Swagger: 
 Use to document the api.
+- http://localhost:8080/swagger-ui/index.html#/register-client-resource-impl
 
 - Spring Kafka:
 Communication assync through Kafka topics
@@ -44,6 +45,7 @@ Communication assync through Kafka topics
 
 - Redis Cache Database : quick access to customer information instead of consulting the relational database.
 
+todo: integrate viaCep api to get the customer address
 
 ## Running the application
 
