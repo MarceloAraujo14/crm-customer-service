@@ -1,6 +1,9 @@
-server:
-  port: '8090'
 spring:
+  config:
+    activate:
+      on-profile:
+        - local
+
   application:
     name: 'kafka-customer-producer'
 
@@ -26,6 +29,58 @@ spring:
     timeout: 1000ms
     time-to-live: 3600
     key-prefix: crm-customer-service
+
+kafka:
+  topic:
+    register-customer: 'register_crm_customer'
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - prod
+
+  application:
+    name: 'kafka-customer-producer'
+
+  #Database Configuration
+  datasource:
+    url: ${JDBC_DATASOURCE_URL}
+  flyway:
+    locations: "classpath:db/migration"
+    baseline-on-migrate: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  #Cache Configuration
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 1000ms
+    time-to-live: 3600
+    key-prefix: crm-customer-service
+
+  kafka:
+    producer:
+      bootstrap-servers: 'localhost:9092'
+      key-serializer: 'org.apache.kafka.common.serialization.StringSerializer'
+      value-serializer: 'io.confluent.kafka.serializers.KafkaAvroSerializer'
+      properties:
+        schema:
+          registry:
+            url: "http://localhost:8081"
+        specific:
+          avro:
+            reader: true
 
 kafka:
   topic:
