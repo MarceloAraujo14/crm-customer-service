@@ -1,4 +1,13 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'crm-customer-service'
+
+
 
 include 'crm-customer-service-adapters:kafka-avro'
 include 'crm-customer-service-core'
