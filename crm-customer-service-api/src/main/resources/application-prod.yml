@@ -25,7 +25,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-#Cache Configuration
+  #Cache Configuration
   cache:
     type: redis
   redis:
