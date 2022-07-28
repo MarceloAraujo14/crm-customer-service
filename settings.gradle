@@ -16,4 +16,5 @@ include 'crm-customer-service-adapters:spring-data-repository'
 include 'crm-customer-service-adapters:spring-redis-cache'
 include 'crm-customer-service-consumer'
 include 'crm-customer-service-producer'
+include 'crm-customer-service-jobs'
 

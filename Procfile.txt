@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar target/cmr-customer-service-api-0.0.1-SNAPSHOT.jar
