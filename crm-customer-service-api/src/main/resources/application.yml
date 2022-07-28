@@ -3,34 +3,6 @@ server:
 
 #spring configuration
 spring:
-  config:
-    import: ./datasource.yml
+
   application:
     name: crm-customer-service-api
-
-#Database Configuration
-  datasource:
-    url: jdbc:postgresql://localhost:5432/crmservice
-    username: admin
-    password: admin
-    driver-class-name: org.postgresql.Driver
-  flyway:
-    locations: "classpath:db/migration"
-    baseline-on-migrate: false
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-
-#Cache Configuration
-  cache:
-    type: redis
-  redis:
-    host: localhost
-    port: 6379
-    timeout: 1000ms
-    time-to-live: 3600
-    key-prefix: crm-customer-service

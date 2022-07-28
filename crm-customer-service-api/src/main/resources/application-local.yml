@@ -1,15 +1,18 @@
 #spring configuration
 spring:
+
 #Database Configuration
   datasource:
-    url: ${JDBC_DATASOURCE_URL}
-    username: ${USER}
-    password: ${PASSWORD}
+    url: jdbc:postgresql://localhost:5432/crmservice
+    username: admin
+    password: admin
     driver-class-name: org.postgresql.Driver
 
+  flyway:
+    locations: "classpath:db/migration"
+    baseline-on-migrate: false
+
   jpa:
-    show-sql: true
-    generate-ddl: true
     hibernate:
       ddl-auto: update
     properties:
