@@ -1,1 +1,1 @@
-web: $WEB_CMD
+web: java -Dserver.port=$PORT -jar crm-service-customer-api/build/libs/crm-service-customer-api-1.0-SNAPSHOT.jar -a crm-service-customer-api
