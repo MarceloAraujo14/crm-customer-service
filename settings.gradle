@@ -1,0 +1,4 @@
+rootProject.name = 'crm-service'
+
+include 'crm-service-customer-api'
+
