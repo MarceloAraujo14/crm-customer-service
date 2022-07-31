@@ -1,11 +1,10 @@
-allprojects {
-    group = 'com.maraujo'
-    version = '1.0-SNAPSHOT'
-}
+group = 'com.maraujo'
+version = '1.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java'
-
+    group = 'com.maraujo'
+    version = '1.0-SNAPSHOT'
     sourceCompatibility = '17'
     targetCompatibility = '17'
 }

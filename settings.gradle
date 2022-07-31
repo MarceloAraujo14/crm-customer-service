@@ -1,4 +1,8 @@
 rootProject.name = 'crm-service'
 
 include 'crm-service-customer-api'
+include 'crm-service-customer-core'
+include 'crm-service-customer-adapters'
+include 'crm-service-customer-adapters:spring-data-repository'
+include 'crm-service-customer-adapters:spring-redis-cache'
 

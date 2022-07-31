@@ -1,0 +1,27 @@
+#spring configuration
+spring:
+#Database Configuration
+  datasource:
+    url: ${JDBC_DATASOURCE_URL}
+    username: ${USER}
+    password: ${PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+#Cache Configuration
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 1000ms
+    time-to-live: 3600
+    key-prefix: crm-customer-service
