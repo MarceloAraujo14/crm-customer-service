@@ -1,4 +1,4 @@
-create TABLE tb_customer (
+create TABLE IF NOT EXISTS tb_customer (
   doc_content VARCHAR(14) NOT NULL,
    name VARCHAR(50) NOT NULL,
    mother_name VARCHAR(50) NOT NULL,

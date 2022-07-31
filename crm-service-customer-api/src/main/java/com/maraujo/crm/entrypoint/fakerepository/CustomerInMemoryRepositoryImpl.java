@@ -3,7 +3,6 @@ package com.maraujo.crm.entrypoint.fakerepository;
 import com.maraujo.crm.core.domain.Customer;
 import com.maraujo.crm.core.port.CustomerRepository;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;

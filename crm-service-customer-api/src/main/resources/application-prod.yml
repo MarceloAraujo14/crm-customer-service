@@ -7,6 +7,10 @@ spring:
     password: ${PASSWORD}
     driver-class-name: org.postgresql.Driver
 
+  flyway:
+    locations: "filesystem:deploy/migration/postgres"
+    baseline-on-migrate: false
+
   jpa:
     show-sql: true
     generate-ddl: true
