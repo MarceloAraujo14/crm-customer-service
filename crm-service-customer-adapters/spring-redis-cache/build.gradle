@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot'
+	id 'org.springframework.boot' apply false
 	id 'io.spring.dependency-management'
 }
 
@@ -22,10 +22,8 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootJar {
-	enabled = false
-}
-
-jar {
-	enabled = false
+dependencyManagement {
+	imports {
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+	}
 }
