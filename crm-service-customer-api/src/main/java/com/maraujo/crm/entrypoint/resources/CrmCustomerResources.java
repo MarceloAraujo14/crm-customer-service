@@ -1,8 +1,8 @@
 package com.maraujo.crm.entrypoint.resources;
 
 import com.maraujo.crm.core.usecase.clearcache.ClearCacheUseCaseImpl;
-import com.maraujo.crm.core.usecase.registercustomer.RegisterCustomerUseCase;
-import com.maraujo.crm.core.usecase.retrievecustomer.RetrieveCustomerUseCase;
+import com.maraujo.crm.core.usecase.registercustomer.RegisterCustomerUseCaseImpl;
+import com.maraujo.crm.core.usecase.retrievecustomer.RetrieveCustomerUseCaseImpl;
 import com.maraujo.crm.entrypoint.mapper.ResourceCustomerMapper;
 import com.maraujo.crm.entrypoint.resources.request.RegisterCustomerRequest;
 import com.maraujo.crm.entrypoint.resources.response.CustomerResponse;
@@ -22,8 +22,8 @@ import java.util.List;
 @Named
 public class CrmCustomerResources {
 
-    private final RegisterCustomerUseCase registerCustomerUseCase;
-    private final RetrieveCustomerUseCase retrieveCustomerUseCase;
+    private final RegisterCustomerUseCaseImpl registerCustomer;
+    private final RetrieveCustomerUseCaseImpl retrieveCustomer;
     private final ClearCacheUseCaseImpl clearCacheUseCase;
     private final ResourceCustomerMapper converter;
 
@@ -33,7 +33,7 @@ public class CrmCustomerResources {
         log.info("Registering customer: {}", registerCustomerRequest);
         return ResponseEntity.ok(
                 converter.toResponse(
-                        registerCustomerUseCase.registerNewCustomer(
+                        registerCustomer.registerNewCustomer(
                                 converter.toInput(registerCustomerRequest))));
     }
 
@@ -43,7 +43,7 @@ public class CrmCustomerResources {
         log.info("Retrieving Customer Register with document: {}", documentContent);
         return ResponseEntity.ok(
                 converter.toResponse(
-                        retrieveCustomerUseCase.retrieveCustomerById(documentContent)));
+                        retrieveCustomer.retrieveCustomerById(documentContent)));
     }
 
     @ApiOperation(value = "Retrieve register information about all customer")
@@ -51,7 +51,7 @@ public class CrmCustomerResources {
     public ResponseEntity<List<CustomerResponse>> retrieveAllCustomers() {
         return ResponseEntity.ok(
                 converter.toResponseList(
-                        retrieveCustomerUseCase.retrieveAllCustomers()));
+                        retrieveCustomer.retrieveAllCustomers()));
     }
 
     @DeleteMapping("/clear-cache")

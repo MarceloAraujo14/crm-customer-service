@@ -1,11 +1,29 @@
 group = 'com.maraujo'
 version = '1.0-SNAPSHOT'
 
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.7.2")
+    }
+}
+
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
     group = 'com.maraujo'
     version = '1.0-SNAPSHOT'
+
     sourceCompatibility = '17'
     targetCompatibility = '17'
+
+    compileJava.options.encoding('UTF-8')
+    compileTestJava.options.encoding('UTF-8')
 }
 

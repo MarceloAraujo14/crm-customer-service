@@ -4,22 +4,21 @@ import com.maraujo.crm.core.domain.exception.CustomerNotFoundException;
 import com.maraujo.crm.core.external.CustomerOutput;
 import com.maraujo.crm.core.port.CustomerRepository;
 import com.maraujo.crm.core.util.mapper.CustomerMapper;
+import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
 import java.util.List;
 import java.util.logging.Logger;
 
+@RequiredArgsConstructor
 @Named
 public class RetrieveCustomerUseCaseImpl implements RetrieveCustomerUseCase{
 
     private final Logger log = Logger.getLogger(RetrieveCustomerUseCaseImpl.class.getName());
 
     private final CustomerRepository customerRepository;
-    private final CustomerMapper customerMapper = new CustomerMapper();
+    private final CustomerMapper customerMapper;
 
-    public RetrieveCustomerUseCaseImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
     @Override
     public CustomerOutput retrieveCustomerById(String documentContent) {
         String logg = String.format("Retrieving customer with id: %s", documentContent);
