@@ -17,7 +17,7 @@ public class CrmCustomerPing {
 
     private final CrmCustomerClient client;
 
-    @Scheduled(fixedRate = 25, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedRate = 12, timeUnit = TimeUnit.HOURS)
     public void pingCrmCustomerServiceApi(){
         try{
             log.info("Ping crm-service-customer-api at heroku. status: {} ", client.pingCrmCustomerService());
