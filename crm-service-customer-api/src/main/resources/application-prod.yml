@@ -24,8 +24,8 @@ spring:
   cache:
     type: redis
   redis:
-    host: localhost
-    port: 6379
+    host: ${REDIS_TLS_URL}
+    port: 6480
     timeout: 1000ms
     time-to-live: 3600
     key-prefix: crm-customer-service
