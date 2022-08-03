@@ -6,7 +6,6 @@ import org.springframework.data.redis.cache.RedisCacheWriter;
 
 import java.util.Map;
 
-
 public class CustomerRedisCacheManager extends RedisCacheManager {
 
     public CustomerRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations) {
