@@ -89,3 +89,14 @@ Or simply
   
 }
 ```
+
+### Access application on heroku
+
+Swagger da API:
+https://crm-service-customer-api.herokuapp.com/swagger-ui/index.html
+
+Endpoint da API:
+GET https://crm-service-customer-api.herokuapp.com/api/v1/customer
+
+Endpoint da JOB:
+GET https://crm-service-customer-job.herokuapp.com/
