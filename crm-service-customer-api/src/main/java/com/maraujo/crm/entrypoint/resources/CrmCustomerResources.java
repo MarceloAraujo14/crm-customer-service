@@ -60,5 +60,5 @@ public class CrmCustomerResources {
     }
 
 
-
+    //todo: consumes viaCep api to get customer address
 }
